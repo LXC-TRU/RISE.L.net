@@ -13,10 +13,12 @@ Lightweight IoT device management toolkit. Pair a small MicroPython client with 
 ## Install
 
 ```bash
-pip install rise-l-net           # client + sync server (stdlib only)
-pip install rise-l-net[async]    # adds aiohttp + aiosqlite
-pip install rise-l-net[dev]      # for contributors
+pip install rise-l-net             # client + sync server (stdlib only)
+pip install "rise-l-net[async]"    # adds aiohttp + aiosqlite
+pip install "rise-l-net[dev]"      # for contributors
 ```
+
+> macOS / zsh 用户:`[...]` 是 zsh 的 glob 字符,所以带 extras 的命令必须加引号(或单引号)。bash 不需要。
 
 Python 3.10+ on the server side. The sync client is also designed to import on MicroPython.
 
