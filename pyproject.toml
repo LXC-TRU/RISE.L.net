@@ -1,0 +1,120 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rise-l-net"
+version = "0.1.0"
+description = "Lightweight IoT device management toolkit (MicroPython client + Python server, sync & async)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "RISE.L.net", email = "lyuxc_cn@foxmail.com" }]
+keywords = ["iot", "micropython", "esp32", "device-management", "telemetry", "heartbeat"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: MicroPython",
+    "Topic :: Internet",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: System :: Networking",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+server = []
+async = ["aiohttp>=3.9", "aiosqlite>=0.20"]
+all = ["aiohttp>=3.9", "aiosqlite>=0.20"]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "build>=1.2",
+    "twine>=5.0",
+    "aiohttp>=3.9",
+    "aiosqlite>=0.20",
+]
+
+[project.urls]
+Homepage = "https://lyuxc.cn/risel"
+Repository = "https://github.com/LXC-TRU/RISE.L.net"
+Issues = "https://github.com/LXC-TRU/RISE.L.net/issues"
+Changelog = "https://github.com/LXC-TRU/RISE.L.net/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rise_l_net"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/examples",
+    "/README.md",
+    "/CHANGELOG.md",
+    "/LICENSE",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = [
+    "E501",   # line length, handled by formatter
+    "SIM105", # `try/except/pass` is fine for best-effort cleanup
+    "B027",   # ABC hooks intentionally have an empty default impl
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402", "RUF059"]
+"src/rise_l_net/client/transport.py" = ["BLE001"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true
+disallow_untyped_defs = true
+files = ["src/rise_l_net"]
+
+[[tool.mypy.overrides]]
+module = ["aiosqlite.*", "aiohttp.*"]
+ignore_missing_imports = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-ra --strict-markers"
+filterwarnings = [
+    "error",
+    "ignore::pytest.PytestUnraisableExceptionWarning",
+    "ignore::ResourceWarning",
+]
+
+[tool.coverage.run]
+source = ["src/rise_l_net"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "if MICROPYTHON:",
+]
