@@ -1,4 +1,4 @@
-"""Server-side device manager."""
+"""Server-side device manager — sync and async."""
 
 from __future__ import annotations
 
@@ -15,6 +15,10 @@ from .storage import InMemoryStorage, SQLiteStorage, Storage
 
 __all__ = [
     "AlertPlugin",
+    "AsyncInMemoryStorage",
+    "AsyncRISELServer",
+    "AsyncSQLiteStorage",
+    "AsyncStorage",
     "AuthMiddleware",
     "InMemoryStorage",
     "LoggingMiddleware",

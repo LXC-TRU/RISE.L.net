@@ -1,4 +1,4 @@
-"""Device-side client."""
+"""Device-side client — sync and async."""
 
 from __future__ import annotations
 
@@ -14,6 +14,8 @@ from .middleware import (
 from .transport import HTTPTransport, Transport
 
 __all__ = [
+    "AsyncHTTPTransport",
+    "AsyncRISELDevice",
     "CacheMiddleware",
     "CompressionMiddleware",
     "HTTPTransport",
