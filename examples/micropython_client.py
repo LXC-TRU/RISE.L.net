@@ -1,4 +1,4 @@
-"""MicroPython client example for ESP32-class boards.
+"""MicroPython client example for K230-class boards.
 
 Copy this file and the rise_l_net package onto the device, then::
 
@@ -18,7 +18,7 @@ def main() -> None:
         wifi_ssid="MyWiFi",
         wifi_password="mypass",
         heartbeat_interval=30,
-        metadata={"device_name": "ESP32-Sensor-01", "location": "garage"},
+        metadata={"device_name": "K230-Sensor-01", "location": "garage"},
     ).use(RetryMiddleware(max_retries=5, base_delay=2.0))
 
     device.start(block=False)

@@ -10,7 +10,7 @@ readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
 authors = [{ name = "RISE.L.net", email = "lyuxc_cn@foxmail.com" }]
-keywords = ["iot", "micropython", "esp32", "device-management", "telemetry", "heartbeat"]
+keywords = ["iot", "micropython", "k230", "device-management", "telemetry", "heartbeat"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",

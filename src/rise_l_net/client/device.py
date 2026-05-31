@@ -11,7 +11,7 @@ firmware.  It handles:
 * Lifecycle hooks so application code can react to events without subclassing.
 
 The class is designed to work on both CPython (for testing and server-side
-scripts) and MicroPython (for ESP32 / RP2040 firmware).
+scripts) and MicroPython (for K230 / RP2040 firmware).
 """
 
 from __future__ import annotations

@@ -7,7 +7,7 @@ Lightweight IoT device management toolkit. Pair a small MicroPython client with 
 
 - **Two-way library**: ships both a device-side client and a server-side manager.
 - **Sync and async**: `RISELDevice`/`RISELServer` for stdlib, `AsyncRISELDevice`/`AsyncRISELServer` for asyncio.
-- **MicroPython-friendly**: the sync client runs on ESP32-class boards (no extra deps).
+- **MicroPython-friendly**: the sync client runs on K230-class boards (no extra deps).
 - **Pluggable**: middleware, plugins, custom routes, swappable storage and transport.
 
 ## Install

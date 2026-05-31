@@ -13,7 +13,7 @@ import sys
 # Detect the runtime once at import time.  The rest of the library reads this
 # flag to branch between CPython and MicroPython code paths.
 MICROPYTHON: bool = sys.implementation.name == "micropython"
-"""True when running under MicroPython (e.g. ESP32, RP2040)."""
+"""True when running under MicroPython (e.g. K230, RP2040)."""
 
 
 def monotonic() -> float:
